@@ -42,7 +42,7 @@ public class Gugudan {
 				
 				//4단 기능을 더하여 사용자에게 숫자를 입력받아 구구단을 출력하는 방식으로 구현 Scanner class 사용
 			
-				System.out.println("출력할 구구단은? : ");
+				System.out.println("출력할 구구단은을 입력하세요. ");
 				Scanner scanner = new Scanner(System.in);
 				int number = scanner.nextInt();
 				System.out.println("입력받은 단 : "+ number);
