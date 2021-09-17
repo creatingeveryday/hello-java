@@ -68,30 +68,45 @@ public class Gugudan {
 //				}
 //				
 //				System.out.println("for문을 사용해 구구단을 출력합니다.");
-//				int j;
-//				for (j=1; j< 10; j++) {
+//				
+//				for (int j=1; j< 10; j++) {
 //					System.out.println(number * j );
 //					
 //				}
 //				
 				//조건문 개념을 활용하여 2~9까지의 숫자만을 입력받아 구구단 구현 
+//				System.out.println("출력할 구구단을 입력하세요. ");
+//				Scanner scanner = new Scanner(System.in);
+//				int number = scanner.nextInt();
+//				
+//				if(2 <= number && number <= 9) {
+//					
+//					
+//					for (int j=1; j< 10; j++) {
+//						System.out.println(number * j );
+//						
+//					}
+//				}else {
+//					System.out.println("2이상, 9이하의 값만 입력할 수 있습니다.");
+//					
+//					
+//				}
+				
+				
+				// 배열 기능 추가하여 구구단 구현 
 				System.out.println("출력할 구구단을 입력하세요. ");
 				Scanner scanner = new Scanner(System.in);
 				int number = scanner.nextInt();
 				
-				if(2 <= number && number <= 9) {
-					System.out.println("입력받은 "+ number+"단을 출력합니다.");
-					System.out.println("for문을 사용합니다.");
-					int j;
-					for (j=1; j< 10; j++) {
-						System.out.println(number * j );
-						
-					}
-				}else {
-					System.out.println("2이상, 9이하의 값만 입력할 수 있습니다.");
-					
-					
+				int result[] = new int[9];
+				
+				for(int i = 0; i < result.length; i++) {
+					result[i] = number * (i + 1);
+					System.out.println(result[i]);
+				
 				}
+				
+				
 				
 
 	}
