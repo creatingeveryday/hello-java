@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Calendar {
-	
+
 	public void printSampleCalendar() {
 		System.out.println("일  월  화  수  목 금 토");
 		System.out.println("--------------------");
@@ -9,18 +9,19 @@ public class Calendar {
 		System.out.println(" 8  9 10 11 12 13 14");
 		System.out.println("15 16 17 18 19 20 21");
 		System.out.println("22 23 24 25 26 27 28");
-		
+
 	}
-	
-	int[] maxDaysOfMonth = {31,28,31,30,31,30,31,31,30,31,30,31};
+
+	int[] maxDaysOfMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
 	// 메소드를 활용해서 만들어보기
 	public int getMaxDaysMonth(int month) {
 		return maxDaysOfMonth[month - 1];
-		
+
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 //		//두 수의 합 구하기.( 키보드 입력을 받은 두 수)
 //		int a, b; 
 //		Scanner sc = new Scanner(System.in);
@@ -35,20 +36,20 @@ public class Calendar {
 //		// 두 수 의 합 출력 
 //		System.out.printf("두 수의 합은 %d입니다.", a+b);
 //		sc.close(); 
-		
-		// 숫자를 입력받아 해당하는 달의 최대 일수를 출력을 구현. 
+
+		// 숫자를 입력받아 해당하는 달의 최대 일수를 출력을 구현.
 		System.out.println("달을 입력하세요.");
 		Scanner sc1 = new Scanner(System.in);
 		int inputMonth = sc1.nextInt();
-		
+
 		Calendar cal = new Calendar();
-		
+
 //		System.out.println(inputMonth+"월은 "+daysOfMonth[inputMonth - 1] +"일까지 있습니다.");       //배열 기능으로 출력
-		System.out.printf("%d월은 %d일까지 있습니다.\n",inputMonth , cal.getMaxDaysMonth(inputMonth));  //메소드 기능으로 출력 , printf 메소드 사용.
+		System.out.printf("%d월은 %d일까지 있습니다.\n", inputMonth, cal.getMaxDaysMonth(inputMonth)); // 메소드 기능으로 출력 , printf
+																								// 메소드 사용.
 		sc1.close();
-		
+
 		cal.printSampleCalendar();
 	}
 
-	
 }
