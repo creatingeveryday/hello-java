@@ -40,32 +40,22 @@ public class Gugudan {
 				result = samdan *9;
 				System.out.println(result);
 				
-				//4단 기능을 더하여 사용자에게 숫자를 입력받아 구구단을 출력하는 방식으로 구현 Scanner class 사용
+				//사용자에게 숫자를 입력받아 구구단을 출력하는 방식으로 구현 Scanner class 사용
 			
 				System.out.println("출력할 구구단은을 입력하세요. ");
 				Scanner scanner = new Scanner(System.in);
 				int number = scanner.nextInt();
-				System.out.println("입력받은 단 : "+ number);
+				System.out.println("입력받은 "+ number+"단을 출력합니다.");
 				
-				int result2 = number * 1 ;
-				System.out.println(result2);
-				result2 = number * 2;
-				System.out.println(result2);
-				result2 = number * 3;
-				System.out.println(result2);
-				result2 = number * 4;
-				System.out.println(result2);
-				result2 = number * 5;
-				System.out.println(result2);
-				result2 = number * 6;
-				System.out.println(result2);
-				result2 = number * 7;
-				System.out.println(result2);
-				result2 = number * 8;
-				System.out.println(result2);
-				result2 = number * 9;
-				System.out.println(result2);
-				
+				System.out.println(number * 1);
+				System.out.println(number * 2);
+				System.out.println(number * 3);
+				System.out.println(number * 4);
+				System.out.println(number * 5);
+				System.out.println(number * 6);
+				System.out.println(number * 7);
+				System.out.println(number * 8);
+				System.out.println(number * 9);
 				
 				
 				
