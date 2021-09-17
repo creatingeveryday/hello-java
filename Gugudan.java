@@ -1,8 +1,34 @@
 import java.util.Scanner;
 
 public class Gugudan {
+	//메소드 기능 이용하여 2부터 9단까지 구구단 구현 - 배열에 값 저장.
+	
+	public static int[] saveValue(int times) {
+		int[] result = new int [9];
+		for(int i = 0; i< result.length; i++) {
+			result[i] = times * (i + 1);
+		}
+		
+		return result;
+	}
 
+	//메소드 기능 이용하여 2부터 9단까지 구구단 구현   - 저장된 값 출력 
+	public static void print(int[] result) {
+		for (int i = 0; i < result.length; i++) {
+	           System.out.println(result[i]);
+	        }
+	    }
+
+	
+	
 	public static void main(String[] args) {
+		
+		//메소드 기능 이용하여 2부터 9단까지 구구단 구현
+		for(int i = 2; i < 10; i++) {
+			int[] result = saveValue(i);
+			print(result);
+		}
+	
 		
 				//2단 단순반복 : 시간이 많이 걸림. 재사용성 낮음. 
 		
@@ -94,21 +120,20 @@ public class Gugudan {
 				
 				
 				// 배열 기능 추가하여 구구단 구현 
-				System.out.println("출력할 구구단을 입력하세요. ");
-				Scanner scanner = new Scanner(System.in);
-				int number = scanner.nextInt();
+//				System.out.println("출력할 구구단을 입력하세요. ");
+//				Scanner scanner = new Scanner(System.in);
+//				int number = scanner.nextInt();
+//				
+//				int result[] = new int[9];
+//				
+//				for(int i = 0; i < result.length; i++) {
+//					result[i] = number * (i + 1);
+//					System.out.println(result[i]);
+//				
+//				}
+//				
 				
-				int result[] = new int[9];
-				
-				for(int i = 0; i < result.length; i++) {
-					result[i] = number * (i + 1);
-					System.out.println(result[i]);
-				
-				}
-				
-				
-				
-
+			
 	}
 
 }
