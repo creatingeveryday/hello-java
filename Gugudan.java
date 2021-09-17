@@ -1,8 +1,7 @@
-import java.util.Scanner;
+
+// 코드가 많아지고 복잡해지면 관련있는 메소드를 같이 관리해야할 필요성이 생긴다. 그럴때 클래스를 사용해 정리정돈 할 수 있다. 효율적으로 관리 가능하고 가독성이 높아진다. 클래스별로 파일을 나누어 관리할수도 있다.
 
 public class Gugudan {
-	//메소드 기능 이용하여 2부터 9단까지 구구단 구현 - 배열에 값 저장.
-	
 	public static int[] saveValue(int times) {
 		int[] result = new int [9];
 		for(int i = 0; i< result.length; i++) {
@@ -11,23 +10,17 @@ public class Gugudan {
 		
 		return result;
 	}
-
-	//메소드 기능 이용하여 2부터 9단까지 구구단 구현   - 저장된 값 출력 
+	
+	
 	public static void print(int[] result) {
 		for (int i = 0; i < result.length; i++) {
-	           System.out.println(result[i]);
-	        }
-	    }
+			System.out.println(result[i]);
+		}
+	}
 
 	
 	
-	public static void main(String[] args) {
-		
-		//메소드 기능 이용하여 2부터 9단까지 구구단 구현
-		for(int i = 2; i < 10; i++) {
-			int[] result = saveValue(i);
-			print(result);
-		}
+	
 	
 		
 				//2단 단순반복 : 시간이 많이 걸림. 재사용성 낮음. 
@@ -136,4 +129,3 @@ public class Gugudan {
 			
 	}
 
-}
