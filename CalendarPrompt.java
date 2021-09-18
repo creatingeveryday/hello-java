@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class CalendarPrompt {
-	private final static String PROMPT = "cal> ";
 
 	public void runPrompt() {
 
@@ -9,8 +8,12 @@ public class CalendarPrompt {
 		Scanner sc = new Scanner(System.in);
 
 		while (true) {
+			System.out.println("연도를입력하세요.");
+			System.out.println("YEAR> ");
+			int year = sc.nextInt();
+			
 			System.out.println("달을 입력하세요.");
-			System.out.println(PROMPT);
+			System.out.println("MONTH> ");
 			int month = sc.nextInt();
 			if (month == -1) {
 				break;
@@ -22,7 +25,7 @@ public class CalendarPrompt {
 				continue;
 			}
 
-			cal.printCalendar(2021, month);
+			cal.printCalendar(year, month);
 
 		}
 
