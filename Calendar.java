@@ -3,41 +3,68 @@ public class Calendar {
 
 	private static final int[] maxDaysOfMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	private static final int[] leap_maxDaysOfMonth = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	
+
 	public boolean isLeapYear(int year) {
-		if(year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
-			return true;	
-		}else {
-		return false;
+		if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 
-	public int getMaxDaysMonth(int year ,int month) {
-		if(isLeapYear(year)) {
+	public int getMaxDaysMonth(int year, int month) {
+		if (isLeapYear(year)) {
 			return leap_maxDaysOfMonth[month - 1];
-		}else {
-			return maxDaysOfMonth[month - 1];			
+		} else {
+			return maxDaysOfMonth[month - 1];
 		}
 	}
-	
 
-	public void printCalendar(int year, int month) {
+	// week 요일명 , return 0~6 (0: Sunday , 6:Saturday)
+	public int getWeekNumber(String week) {
+		
+		switch (week) {
+		case "SU":
+			return 0;
+		case "MO":
+			return 1;
+		case "TU":
+			return 2;
+		case "WE":
+			return 3;
+		case "TH":
+			return 4;
+		case "FR":
+			return 5;
+		case "SA":
+			return 6;
+
+		}
+		return 0;
+	}
+
+	public void printCalendar(int year, int month, String week) {
 		System.out.printf("    <<%4d년%3d월>>\n", year, month);
-		System.out.println("  일  월  화  수 목 금 토");
+		System.out.println(" SU MO TU WE TH FR SA");
 		System.out.println("------------------------");
 		int maxDay = getMaxDaysMonth(year, month);
-				
-		 
-			for (int i = 1; i <= maxDay; i++) {
-				System.out.printf("%3d", i);
-				if (i % 7 == 0) {
-					System.out.println();
-					}
-				}
-				System.out.println();
-			
+		int weekday = getWeekNumber(week);
+
+		//공백을 출력함. 
+		for (int i = 0; i < weekday; i++) {
+			System.out.printf("%s", "   ");
 		}
+		for (int i = 1; i <= maxDay; i++) {
+			System.out.printf("%3d", i);
+			if (i % 7 == 7 - weekday) {
+				System.out.println();
+			}
+		}
+		System.out.println();
+		
+
 	}
+}
 
 //		//두 수의 합 구하기.( 키보드 입력을 받은 두 수)
 //		int a, b; 
@@ -54,7 +81,7 @@ public class Calendar {
 //		System.out.printf("두 수의 합은 %d입니다.", a+b);
 //		sc.close(); 
 
-	// 숫자를 입력받아 해당하는 달의 최대 일수를 출력을 구현.
+// 숫자를 입력받아 해당하는 달의 최대 일수를 출력을 구현.
 //		System.out.println("달을 입력하세요.");
 //		Scanner sc1 = new Scanner(System.in);
 //		int inputMonth = sc1.nextInt();
@@ -63,9 +90,9 @@ public class Calendar {
 //		System.out.println(inputMonth+"월은 "+daysOfMonth[inputMonth - 1] +"일까지 있습니다.");       //배열 기능으로 출력
 //		Calendar cal = new Calendar();
 //		System.out.printf("%d월은 %d일까지 있습니다.\n", inputMonth, cal.getMaxDaysMonth(inputMonth)); // 메소드 기능으로 출력 , printf
-	// 메소드 사용.
+// 메소드 사용.
 
-	// 반복 횟수를 입력받고, 월을 입력하면 해당되는 달의 최대 일수를 모아서 한번에 출력하기.
+// 반복 횟수를 입력받고, 월을 입력하면 해당되는 달의 최대 일수를 모아서 한번에 출력하기.
 //		Calendar cal = new Calendar();
 //		
 //		System.out.println("반복횟수를 입력하세요.");
@@ -97,5 +124,3 @@ public class Calendar {
 //		for(int i=0; i < loopCount; i++) {
 //			System.out.printf("%d월은 %d일까지 있습니다.\n", pickMonth[i],maxDaysOfMonth[i] );
 //		}
-
-
