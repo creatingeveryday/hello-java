@@ -38,18 +38,55 @@ public class Calendar {
 //		sc.close(); 
 
 		// 숫자를 입력받아 해당하는 달의 최대 일수를 출력을 구현.
-		System.out.println("달을 입력하세요.");
-		Scanner sc1 = new Scanner(System.in);
-		int inputMonth = sc1.nextInt();
+//		System.out.println("달을 입력하세요.");
+//		Scanner sc1 = new Scanner(System.in);
+//		int inputMonth = sc1.nextInt();
+//		sc1.close();
 
-		Calendar cal = new Calendar();
 
 //		System.out.println(inputMonth+"월은 "+daysOfMonth[inputMonth - 1] +"일까지 있습니다.");       //배열 기능으로 출력
-		System.out.printf("%d월은 %d일까지 있습니다.\n", inputMonth, cal.getMaxDaysMonth(inputMonth)); // 메소드 기능으로 출력 , printf
+//		Calendar cal = new Calendar();
+//		System.out.printf("%d월은 %d일까지 있습니다.\n", inputMonth, cal.getMaxDaysMonth(inputMonth)); // 메소드 기능으로 출력 , printf
 																								// 메소드 사용.
-		sc1.close();
 
+		
+		// 반복 횟수를 입력받고, 월을 입력하면 해당되는 달의 최대 일수를 모아서 한번에 출력하기.
+		Calendar cal = new Calendar();
+		
+		System.out.println("반복횟수를 입력하세요.");
+		Scanner sc = new Scanner(System.in);
+		int loopCount = sc.nextInt();
+		
+		
+		System.out.println("월을 입력하세요.");
+		
+		int[] maxDaysOfMonth = new int [loopCount]; // 반복할 3개의 달에 해당되는 월의 최대 일수를 담을 배열 생성
+		int[] pickMonth = new int [loopCount];  // 내가 입력한 달을 담은 배열 생성한 후 값 저장. 
+		
+
+		int j = 0;
+		while(j < loopCount) {								//반복횟수 만큼 탐색 및 값 배열에 저장하는 행위 반복실행 
+			Scanner sc1 = new Scanner(System.in);
+			int month1 = sc1.nextInt();
+			pickMonth[j] = month1;
+			j++;
+			if( j == loopCount) {
+				sc1.close();
+			}
+		}
+		
+		//반복문을 활용해 내가 입력한 각각의 달에 해당되는 월의 최대 일수를 배열에 저장.
+		for(int i = 0; i < loopCount;i++) {
+			maxDaysOfMonth[i] = cal.getMaxDaysMonth(pickMonth[i]);
+		}
+		
+		//반복문을 활용해 해당 되는 달의 최대일수를 담은 배열 출력.
+		for(int i=0; i < loopCount; i++) {
+			System.out.printf("%d월은 %d일까지 있습니다.\n", pickMonth[i],maxDaysOfMonth[i] );
+		}
+		
 		cal.printSampleCalendar();
+		sc.close();
 	}
 
 }
