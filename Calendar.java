@@ -1,51 +1,28 @@
-import java.util.Scanner;
 
 public class Calendar {
 
-	public void printSampleCalendar() {
-		System.out.println("일  월  화  수  목 금 토");
-		System.out.println("--------------------");
-		System.out.println(" 1  2  3  4  5  6  7");
-		System.out.println(" 8  9 10 11 12 13 14");
-		System.out.println("15 16 17 18 19 20 21");
-		System.out.println("22 23 24 25 26 27 28");
-
-	}
-
 	int[] maxDaysOfMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-	
 	public int getMaxDaysMonth(int month) {
 		return maxDaysOfMonth[month - 1];
 
 	}
 
-	public static void main(String[] args) {
+	public void printCalendar(int year, int month) {
+		System.out.printf("    <<%4d년%3d월>>\n", year, month);
+		System.out.println("  일  월  화  수 목 금 토");
+		System.out.println("------------------------");
+		int maxDay = getMaxDaysMonth(month);
+		for (int i = 1; i <= maxDay; i++) {
+			System.out.printf("%3d", i);
+			if (i % 7 == 0) {
+				System.out.println();
+			}
 
-		// 종료조건을 이용해 반복하기 
-		Calendar cal = new Calendar();
-		Scanner sc = new Scanner(System.in);
-		String PROMPT = "cal> ";
-		
-		
-		while(true) {
-			System.out.println("월을 입력하세요.");
-			System.out.println(PROMPT);
-			int month = sc.nextInt();
-			if(month == -1) {
-				break;
-			}
-			if(month >12) {
-				continue;
-			}
-			System.out.printf("%d월은 %d일까지 있습니다.\n", month, cal.getMaxDaysMonth(month));
 		}
-		
-		System.out.println("bye~");
-		cal.printSampleCalendar();
-		sc.close();
-		
-		
+		System.out.println();
+	}
+
 //		//두 수의 합 구하기.( 키보드 입력을 받은 두 수)
 //		int a, b; 
 //		Scanner sc = new Scanner(System.in);
@@ -61,32 +38,28 @@ public class Calendar {
 //		System.out.printf("두 수의 합은 %d입니다.", a+b);
 //		sc.close(); 
 
-		// 숫자를 입력받아 해당하는 달의 최대 일수를 출력을 구현.
+	// 숫자를 입력받아 해당하는 달의 최대 일수를 출력을 구현.
 //		System.out.println("달을 입력하세요.");
 //		Scanner sc1 = new Scanner(System.in);
 //		int inputMonth = sc1.nextInt();
 //		sc1.close();
 
-
 //		System.out.println(inputMonth+"월은 "+daysOfMonth[inputMonth - 1] +"일까지 있습니다.");       //배열 기능으로 출력
 //		Calendar cal = new Calendar();
 //		System.out.printf("%d월은 %d일까지 있습니다.\n", inputMonth, cal.getMaxDaysMonth(inputMonth)); // 메소드 기능으로 출력 , printf
-																								// 메소드 사용.
+	// 메소드 사용.
 
-		
-		// 반복 횟수를 입력받고, 월을 입력하면 해당되는 달의 최대 일수를 모아서 한번에 출력하기.
+	// 반복 횟수를 입력받고, 월을 입력하면 해당되는 달의 최대 일수를 모아서 한번에 출력하기.
 //		Calendar cal = new Calendar();
 //		
 //		System.out.println("반복횟수를 입력하세요.");
 //		Scanner sc = new Scanner(System.in);
 //		int loopCount = sc.nextInt();
-		
-		
+
 //		System.out.println("월을 입력하세요.");
-		
+
 //		int[] maxDaysOfMonth = new int [loopCount]; // 반복할 3개의 달에 해당되는 월의 최대 일수를 담을 배열 생성
 //		int[] pickMonth = new int [loopCount];  // 내가 입력한 달을 담은 배열 생성한 후 값 저장. 
-		
 
 //		int j = 0;
 //		while(j < loopCount) {								//반복횟수 만큼 탐색 및 값 배열에 저장하는 행위 반복실행 
@@ -98,7 +71,7 @@ public class Calendar {
 //				sc1.close();
 //			}
 //		}
-		
+
 //		//반복문을 활용해 내가 입력한 각각의 달에 해당되는 월의 최대 일수를 배열에 저장.
 //		for(int i = 0; i < loopCount;i++) {
 //			maxDaysOfMonth[i] = cal.getMaxDaysMonth(pickMonth[i]);
@@ -108,9 +81,5 @@ public class Calendar {
 //		for(int i=0; i < loopCount; i++) {
 //			System.out.printf("%d월은 %d일까지 있습니다.\n", pickMonth[i],maxDaysOfMonth[i] );
 //		}
-		
-		
-		
-	}
 
 }
