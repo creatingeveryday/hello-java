@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class CalendarPrompt {
 
+	
 	public void runPrompt() {
 
 		Calendar cal = new Calendar();
@@ -29,11 +30,14 @@ public class CalendarPrompt {
 				continue;
 			}
 
-			System.out.println("첫번째 요일을 입력하세요.(SU MO TU WE TH FR SA)");
-			System.out.println("WEEKDAY> ");
-			String week = sc.next();
+//			System.out.println("첫번째 요일을 입력하세요.(SU MO TU WE TH FR SA)");
+//			System.out.println("WEEKDAY> ");
+//			String week = sc.next();
 
-			cal.printCalendar(year, month, week);
+			
+			
+			
+			cal.printCalendar(year, month);
 
 		}
 

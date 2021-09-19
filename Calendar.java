@@ -20,43 +20,57 @@ public class Calendar {
 		}
 	}
 
-	// week 요일명 , return 0~6 (0: Sunday , 6:Saturday)
-	public int getWeekNumber(String week) {
-		
-		switch (week) {
-		case "SU":
-			return 0;
-		case "MO":
-			return 1;
-		case "TU":
-			return 2;
-		case "WE":
-			return 3;
-		case "TH":
-			return 4;
-		case "FR":
-			return 5;
-		case "SA":
-			return 6;
-
+	public int getMovingCount(int year, int month) {
+		/**규칙 1 : 1년이 지난 후 같은 월의 1일은 평년이 지났을 경우 1일 뒤, 윤년이 지났을 경우 2일뒤가 된다.
+		 * 1583년 1월 1일은 토요일이다. 
+		 * 1584년 1월 1일은? 하루가 지난 일요일이 된다. 
+		 * 1585년 1월 1일은? 윤년이지나서 이틀이 지난 화요일이 된다. 
+		 * 윤년을 고려한 1년 단위 이동을 반복문을 통해 알 수 있다. 
+		 */
+		int standard_Year = 1583;   // 1583/JAN/First : Gregorian calendar's Standard.
+		int movingByYear = 0;
+		for(int i = standard_Year; i < year;i++) {
+			if(isLeapYear(i)) {
+				movingByYear += 2;
+			}else {
+				movingByYear += 1;
+			}
 		}
-		return 0;
+		
+		/** 규칙 2. 특정 월의 1일의 요일에서 그 다음 월의 1일의 요일은 해당 월의 총 일수를 7로 나눈 나머지만큼 오른쪽으로 이동한다.
+		 * 1583년 1월 1일 토요일
+		 * 1583년 2월 1일 화요일
+		 * 월 단위 이동도 역시 반복문을 통해 알 수 있다. 
+		 */
+		int movingByMonth = 0;
+		for(int i = 1; i < month; i++) {
+			movingByMonth += getMaxDaysMonth(year, i) % 7;
+		}
+		
+		
+		return ( movingByYear + movingByMonth );
+							
 	}
-
-	public void printCalendar(int year, int month, String week) {
-		System.out.printf("    <<%4d년%3d월>>\n", year, month);
+	
+	public void printCalendar(int year, int month) {
+		System.out.printf("    <<%4d년 %3d월>>\n", year, month);
 		System.out.println(" SU MO TU WE TH FR SA");
 		System.out.println("------------------------");
 		int maxDay = getMaxDaysMonth(year, month);
-		int weekday = getWeekNumber(week);
-
+		
+		// 윤년을 고려한 연이동과 월이동 자동 계산
+		int weekday = 0;
+		weekday = (getMovingCount(year, month) + 6) % 7;  //1583년 1월 1일은 토요일에 해당하는 6 + 연이동과 월이동 반영 
+		
 		//공백을 출력함. 
 		for (int i = 0; i < weekday; i++) {
 			System.out.printf("%s", "   ");
 		}
 		for (int i = 1; i <= maxDay; i++) {
 			System.out.printf("%3d", i);
-			if (i % 7 == 7 - weekday) {
+			if (i % 7 == 7- weekday && weekday != 0) {
+				System.out.println();
+			}else if(i % 7 == weekday && weekday ==0) {
 				System.out.println();
 			}
 		}
