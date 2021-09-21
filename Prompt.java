@@ -24,29 +24,38 @@ public class Prompt {
 		Scanner sc = new Scanner(System.in);
 		ToDoList todo = new ToDoList();
 		Calendar cal = new Calendar();
-
-		while (true) {
+		boolean isLoop = true;
+		while (isLoop) {
 			printMenu();
 			System.out.println("명령 (1, 2, 3, h, q)");
 			System.out.println("> ");
 			String inputCommend = sc.next();
 
-			if (inputCommend.equals("1")) {
+			switch (inputCommend) {
+			case "1":
 				todo.saveToDo(sc);
-			} else if (inputCommend.equals("2")) {
+				break;
+			case "2":
 				todo.searchToDo(sc);
-			} else if (inputCommend.equals("3")) {
+				break;
+			case "3":
 				printCalendar(sc, cal);
-			} else if (inputCommend.equals("h")) {
+				break;
+			case "h":
 				printMenu();
-			} else if (inputCommend.equals("q")) {
-				System.out.println("Bye");
+				break;
+			case "q":
+				isLoop = false;
+				break;
+			default:
+				System.out.println("올바른 명령을 입력해주세요.");
 				break;
 			}
-
+			
 		}
-
+		System.out.println("Bye");
 		sc.close();
+		
 	}
 
 	public void printCalendar(Scanner sc, Calendar cal) { // Scanner parameter로 넘겨받음.
